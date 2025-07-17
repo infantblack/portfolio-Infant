@@ -1,0 +1,32 @@
+// Colors
+$primary-blue: #3b82f6;
+$primary-purple: #8b5cf6;
+$primary-cyan: #06b6d4;
+
+// Gradients
+$gradient-primary: linear-gradient(45deg, #{$primary-blue}, #{$primary-purple});
+$gradient-tech: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// Breakpoints
+$breakpoint-xs: 0px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
+
+// Animations
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+$shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);

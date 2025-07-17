@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as *;
+
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all $transition-normal;
+  cursor: pointer;
+  
+  &--primary {
+    background: $gradient-primary;
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #2563eb, #7c3aed);
+      transform: translateY(-2px);
+      box-shadow: $shadow-glow;
+    }
+  }
+  
+  &--secondary {
+    border: 2px solid $primary-blue;
+    color: $primary-blue;
+    background: transparent;
+    
+    &:hover {
+      background: $primary-blue;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+  
+  &--fab {
+    border-radius: 50%;
+    transition: all $transition-normal;
+    
+    &:hover {
+      transform: scale(1.2) rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.contact {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: $gradient-tech;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+    z-index: 0;
+  }
+  
+  &__grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(59, 130, 246, 0.03) 100px),
+      repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(59, 130, 246, 0.03) 100px);
+    z-index: 1;
+  }
+  
+  &__title {
+    color: white;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+  
+  &__info-card {
+    @include glassmorphism(0.05);
+    height: 100%;
+    
+    .social-fab {
+      transition: all $transition-normal;
+      
+      &:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 0 20px rgba(var(--social-color), 0.6);
+      }
+    }
+  }
+  
+  &__form-card {
+    @include glassmorphism(0.08);
+    
+    .form-field {
+      .MuiOutlinedInput-root {
+        background: rgba(255, 255, 255, 0.05);
+        transition: all $transition-normal;
+        
+        &:hover fieldset {
+          border-color: $primary-blue;
+        }
+        
+        &.Mui-focused {
+          fieldset {
+            border-color: $primary-blue;
+            box-shadow: $shadow-glow;
+          }
+          
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+  
+  &__floating-icon {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 1;
+    @include floating-animation();
+    
+    &--1 { left: calc(50% + 100px); top: calc(50% + 100px); }
+    &--2 { left: calc(50% - 150px); top: calc(50% + 200px); animation-delay: 0.5s; }
+    &--3 { left: calc(50% + 200px); top: calc(50% - 100px); animation-delay: 1s; }
+  }
+}

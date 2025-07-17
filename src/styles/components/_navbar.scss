@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+
+.navbar {
+  &__container {
+    backdrop-filter: blur(10px);
+    transition: all $transition-normal;
+  }
+
+  &__logo {
+    font-weight: bold;
+    transition: color $transition-fast;
+    
+    &:hover {
+      color: $primary-blue;
+    }
+  }
+
+  &__nav-item {
+    transition: all $transition-fast;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    &--active {
+      color: $primary-blue;
+    }
+  }
+
+  &__theme-toggle {
+    transition: all $transition-normal;
+    
+    &:hover {
+      transform: scale(1.1) rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// Abstracts
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+// Base
+@use 'base/reset';
+
+// Components
+@use 'components/navbar';
+@use 'components/cards';
+@use 'components/buttons';
+
+// Pages
+@use 'pages/home';
+@use 'pages/experience';
+@use 'pages/contact';
+
+// Essential utility classes only
+.text-gradient {
+  @include gradient-text();
+}
+
+.glassmorphism {
+  @include glassmorphism();
+}

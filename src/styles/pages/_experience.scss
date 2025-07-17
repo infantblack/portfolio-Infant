@@ -1,0 +1,14 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.experience {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  
+  &__title {
+    @include gradient-text();
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+}

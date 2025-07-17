@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.card {
+  @include glassmorphism(0.9);
+  border-radius: 12px;
+  transition: all $transition-normal;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+
+  &--experience {
+    @include hover-glow();
+    
+    &:hover {
+      box-shadow: 0 20px 40px rgba(var(--card-color), 0.2);
+    }
+  }
+
+  &--project {
+    &:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+  }
+
+  &--contact {
+    @include glassmorphism(0.08);
+    
+    .form-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all $transition-normal;
+      
+      &:hover {
+        border-color: $primary-blue;
+      }
+      
+      &:focus {
+        border-color: $primary-blue;
+        box-shadow: $shadow-glow;
+        transform: scale(1.02);
+      }
+    }
+  }
+}
