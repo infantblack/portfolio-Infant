@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { Box, Typography, Container, Card, CardContent, TextField, Button, Grid, Fab, Paper } from '@mui/material';
 import { Send, GitHub, LinkedIn, Email, Code, Terminal, Wifi } from '@mui/icons-material';
-import { useAppSelector } from '../redux/hooks';
+// import { useAppSelector } from '../redux/hooks';
 import { SOCIAL_LINKS } from '../utils/constants';
 
 const Contact = () => {
-  const { animationsEnabled } = useAppSelector((state) => state.theme);
+  // const { animationsEnabled } = useAppSelector((state) => state.theme);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -20,6 +20,7 @@ const Contact = () => {
       alert('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Failed to send message:', error);
       alert('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);

@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { Box, Typography, Container, Card, CardContent, Chip, Avatar } from '@mui/material';
 import { Work, TrendingUp, Code } from '@mui/icons-material';
-import { useAppSelector } from '../redux/hooks';
+// import { useAppSelector } from '../redux/hooks';
 
 const Experience = () => {
-  const { animationsEnabled } = useAppSelector((state) => state.theme);
+  // const { animationsEnabled } = useAppSelector((state) => state.theme);
 
   const experiences = [
     {

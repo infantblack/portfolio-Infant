@@ -10,7 +10,7 @@ import Experience from './pages/Experience';
 import Contact from './pages/Contact';
 
 function AppContent() {
-  const { darkMode } = useSelector((state: any) => state.theme);
+  const { darkMode } = useSelector((state) => state.theme);
   
   const theme = createTheme({
     palette: {
