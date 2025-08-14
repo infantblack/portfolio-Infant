@@ -10,17 +10,27 @@ import Experience from './pages/Experience';
 import Contact from './pages/Contact';
 
 function AppContent() {
-  const { darkMode } = useSelector((state) => state.theme);
+  const { isDark } = useSelector((state) => state.theme);
   
   const theme = createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      mode: isDark ? 'dark' : 'light',
       primary: {
-        main: '#3b82f6',
+        main: '#FF4D5A',
       },
       secondary: {
-        main: '#8b5cf6',
+        main: '#FFD166',
       },
+      background: {
+        default: isDark 
+          ? 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)'
+          : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)',
+        paper: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
+      },
+      text: {
+        primary: isDark ? '#FFFFFF' : '#1F2937',
+        secondary: isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(31, 41, 55, 0.8)'
+      }
     },
     transitions: {
       duration: {
@@ -32,8 +42,14 @@ function AppContent() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={darkMode ? 'dark' : ''}>
-        <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+      <div className={isDark ? 'dark' : ''}>
+        <div style={{ 
+          minHeight: '100vh',
+          background: isDark 
+            ? 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)'
+            : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)',
+          color: isDark ? '#FFFFFF' : '#1F2937'
+        }}>
           <Navbar />
           <Home />
           <About />

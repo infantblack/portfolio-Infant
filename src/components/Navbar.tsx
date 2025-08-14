@@ -38,10 +38,17 @@ const Navbar = () => {
       <AppBar 
         position="fixed" 
         sx={{ 
-          backgroundColor: isDark?  'rgba(10, 9, 9, 0.9)' :'rgba(255, 255, 255, 0.9)',
+          background: isDark 
+            ? 'linear-gradient(135deg, rgba(15, 32, 39, 0.9) 0%, rgba(32, 58, 67, 0.9) 50%, rgba(44, 83, 100, 0.9) 100%)'
+            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 50%, rgba(241, 245, 249, 0.9) 100%)',
           backdropFilter: 'blur(10px)',
-          color: 'text.primary',
-          boxShadow: 1
+          color: isDark ? '#FFFFFF' : '#1F2937',
+          boxShadow: isDark 
+            ? '0 4px 20px rgba(255, 77, 90, 0.2)' 
+            : '0 4px 20px rgba(0, 0, 0, 0.1)',
+          borderBottom: isDark 
+            ? '1px solid rgba(255, 77, 90, 0.3)' 
+            : '1px solid rgba(255, 77, 90, 0.2)'
         }}
       >
         <Toolbar sx={{ 
@@ -64,7 +71,10 @@ const Navbar = () => {
             <Typography 
               variant="h6" 
               sx={{ 
-                color: 'green',
+                background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
                 fontWeight: 'bold',
                 fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' },
                 display: 'flex',
@@ -77,7 +87,7 @@ const Navbar = () => {
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  color: 'green' 
+                  color: '#FF4D5A' 
                 }}
               >
                 <ArrowBackIosNewIcon sx={{ fontSize: { xs: 16, sm: 18, md: 20 } }} />
@@ -100,7 +110,7 @@ const Navbar = () => {
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  color: 'green' 
+                  color: '#FFD166' 
                 }}
               >
                 <ArrowForwardIosIcon sx={{ fontSize: { xs: 16, sm: 18, md: 20 } }} />
@@ -126,14 +136,15 @@ const Navbar = () => {
                     onClick={() => scrollToSection(item.id)}
                     startIcon={<IconComponent sx={{ fontSize: { xs: 16, sm: 18, md: 20 } }} />}
                     sx={{
-                      color: 'text.primary',
+                      color: isDark ? '#FFFFFF' : '#1F2937',
                       fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
                       px: { xs: 1, sm: 1.5, md: 2 },
                       py: { xs: 0.5, sm: 1 },
                       minWidth: { xs: 'auto', sm: 'auto', md: 64 },
                       '&:hover': {
-                        backgroundColor: 'action.hover',
-                        color: 'primary.main'
+                        background: 'linear-gradient(45deg, rgba(255, 77, 90, 0.2), rgba(255, 209, 102, 0.2))',
+                        color: '#FFD166',
+                        transform: 'translateY(-2px)'
                       },
                       '& .MuiButton-startIcon': {
                         marginRight: { xs: 0.5, sm: 1 }
@@ -156,7 +167,8 @@ const Navbar = () => {
                 onClick={() => dispatch(toggleTheme())}
                 sx={{ 
                   ml: { xs: 0.5, sm: 1 },
-                  p: { xs: 1, sm: 1.5 }
+                  p: { xs: 1, sm: 1.5 },
+                  color: isDark ? '#FFFFFF' : '#1F2937'
                 }}
               >
                 {isDark ? 

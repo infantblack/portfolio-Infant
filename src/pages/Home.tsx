@@ -5,7 +5,7 @@ import { useAppSelector } from '../redux/hooks';
 import { TECH_STACK, SOCIAL_LINKS } from '../utils/constants';
 
 const Home = () => {
-  const { animationsEnabled } = useAppSelector((state) => state.theme);
+  const { animationsEnabled, isDark } = useAppSelector((state) => state.theme);
 
 
   const scrollToNext = () => {
@@ -29,7 +29,9 @@ const Home = () => {
         pt: 8,
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)'
+        background: isDark 
+          ? 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)'
+          : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)'
       }}
     >
       {/* Floating Background Elements */}
@@ -49,7 +51,7 @@ const Home = () => {
               zIndex: 0
             }}
           >
-            <IconComponent sx={{ fontSize: 120, color: 'primary.main' }} />
+            <IconComponent sx={{ fontSize: 120, color: '#FF4D5A', opacity: 0.1 }} />
           </motion.div>
         );
       })}
@@ -67,9 +69,9 @@ const Home = () => {
               sx={{ 
                 p: 6, 
                 borderRadius: 4, 
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
+                border: isDark ? '1px solid rgba(255, 77, 90, 0.3)' : '1px solid rgba(255, 77, 90, 0.2)'
               }}
             >
               <motion.div
@@ -84,7 +86,7 @@ const Home = () => {
                     fontSize: { xs: '2.5rem', md: '4rem' },
                     fontWeight: 900,
                     mb: 2,
-                    background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4)',
+                    background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                     backgroundSize: '200% 200%',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
@@ -122,7 +124,7 @@ const Home = () => {
                       sx={{ 
                         fontWeight: 'bold',
                         '&:hover': {
-                          backgroundColor: 'primary.main',
+                          background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                           color: 'white'
                         }
                       }}
@@ -145,9 +147,10 @@ const Home = () => {
                     rel="noopener noreferrer"
                     size="medium"
                     sx={{
-                      background: 'linear-gradient(45deg, #333, #555)',
+                      background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                       '&:hover': {
-                        background: 'linear-gradient(45deg, #000, #333)'
+                        background: 'linear-gradient(45deg, #FFD166, #FF4D5A)',
+                        boxShadow: '0 10px 20px rgba(255, 77, 90, 0.4)'
                       }
                     }}
                   >
@@ -166,9 +169,10 @@ const Home = () => {
                     rel="noopener noreferrer"
                     size="medium"
                     sx={{
-                      background: 'linear-gradient(45deg, #0077b5, #005885)',
+                      background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                       '&:hover': {
-                        background: 'linear-gradient(45deg, #005885, #004065)'
+                        background: 'linear-gradient(45deg, #FFD166, #FF4D5A)',
+                        boxShadow: '0 10px 20px rgba(255, 209, 102, 0.4)'
                       }
                     }}
                   >
@@ -185,9 +189,10 @@ const Home = () => {
                     href={SOCIAL_LINKS.EMAIL}
                     size="medium"
                     sx={{
-                      background: 'linear-gradient(45deg, #ea4335, #c23321)',
+                      background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                       '&:hover': {
-                        background: 'linear-gradient(45deg, #c23321, #a02622)'
+                        background: 'linear-gradient(45deg, #FFD166, #FF4D5A)',
+                        boxShadow: '0 10px 20px rgba(255, 77, 90, 0.4)'
                       }
                     }}
                   >
@@ -210,9 +215,10 @@ const Home = () => {
                     py: 2,
                     fontSize: '1.2rem',
                     borderRadius: 3,
-                    background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+                    background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                     '&:hover': {
-                      background: 'linear-gradient(45deg, #2563eb, #7c3aed)'
+                      background: 'linear-gradient(45deg, #FFD166, #FF4D5A)',
+                      boxShadow: '0 10px 20px rgba(255, 77, 90, 0.4)'
                     }
                   }}
                 >
@@ -244,8 +250,8 @@ const Home = () => {
               <KeyboardArrowDown 
                 sx={{ 
                   fontSize: 48, 
-                  color: 'primary.main',
-                  filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.5))'
+                  color: '#FF4D5A',
+                  filter: 'drop-shadow(0 0 10px rgba(255, 77, 90, 0.5))'
                 }} 
               />
             </motion.div>

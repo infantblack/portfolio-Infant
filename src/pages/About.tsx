@@ -4,7 +4,7 @@ import { Code, Storage, Build } from '@mui/icons-material';
 import { useAppSelector } from '../redux/hooks';
 
 const About = () => {
-  const { animationsEnabled } = useAppSelector((state) => state.theme);
+  const { animationsEnabled, isDark } = useAppSelector((state) => state.theme);
 
   const skills = [
     { category: 'Frontend', items: ['React', 'TypeScript', 'Next.js', 'MatrialUI'], icon: Code },
@@ -13,7 +13,14 @@ const About = () => {
   ];
 
   return (
-    <Box id="about" sx={{ minHeight: '100vh', pt: 12, pb: 8 }}>
+    <Box id="about" sx={{ 
+      minHeight: '100vh', 
+      pt: 12, 
+      pb: 8,
+      background: isDark 
+        ? 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)'
+        : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)'
+    }}>
       <Container maxWidth="lg">
         <motion.div
           initial={animationsEnabled ? { opacity: 0, y: 30 } : {}}
@@ -24,7 +31,15 @@ const About = () => {
             variant="h2" 
             component="h1" 
             textAlign="center" 
-            sx={{ mb: 6, fontWeight: 'bold' }}
+            sx={{ 
+              mb: 6, 
+              fontWeight: 'bold',
+              color: '#FFFFFF',
+              background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
           >
             About Me
           </Typography>
@@ -40,7 +55,7 @@ const About = () => {
               variant="h6" 
               sx={{ 
                 mb: 2, 
-                color: 'text.secondary',
+                color: isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)',
                 lineHeight: 1.8,
                 textAlign: 'center'
               }}
@@ -51,7 +66,7 @@ const About = () => {
             <Typography 
               variant="h6" 
               sx={{ 
-                color: 'text.secondary',
+                color: isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)',
                 lineHeight: 1.8,
                 textAlign: 'center'
               }}
@@ -71,7 +86,11 @@ const About = () => {
             variant="h4" 
             component="h2" 
             textAlign="center" 
-            sx={{ mb: 6, fontWeight: 'bold' }}
+            sx={{ 
+              mb: 6, 
+              fontWeight: 'bold',
+              color: isDark ? '#FFFFFF' : '#333333'
+            }}
           >
             Skills & Tools
           </Typography>
@@ -91,10 +110,15 @@ const About = () => {
                       sx={{ 
                         height: '100%',
                         textAlign: 'center',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
                         transition: 'all 0.3s ease',
                         borderRadius: { xs: 2, md: 3 },
                         '&:hover': {
-                          boxShadow: { xs: 4, md: 6 },
+                          background: 'rgba(255, 255, 255, 0.15)',
+                          boxShadow: '0 20px 40px rgba(255, 77, 90, 0.3)',
+                          border: '1px solid rgba(255, 77, 90, 0.5)',
                           transform: { xs: 'translateY(-2px)', md: 'translateY(-4px)' }
                         }
                       }}
@@ -102,7 +126,7 @@ const About = () => {
                       <CardContent sx={{ p: { xs: 2, sm: 2.5, md: 3 } }}>
                         <Avatar 
                           sx={{ 
-                            bgcolor: 'primary.main',
+                            background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
                             width: { xs: 48, sm: 52, md: 56 },
                             height: { xs: 48, sm: 52, md: 56 },
                             mx: 'auto',
@@ -118,7 +142,7 @@ const About = () => {
                           sx={{ 
                             mb: { xs: 2, md: 3 }, 
                             fontWeight: 'bold', 
-                            color: 'primary.main',
+                            color: isDark ? '#FFFFFF' : '#333333',
                             fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' }
                           }}
                         >
@@ -143,14 +167,14 @@ const About = () => {
                                 label={skill} 
                                 size="small"
                                 sx={{
-                                  border: '1px solid',
-                                  borderColor: 'primary.main',
-                                  color: 'primary.main',
+                                  background: 'rgba(255, 209, 102, 0.2)',
+                                  color: '#FFD166',
+                                  border: '1px solid #FFD166',
                                   fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' },
                                   height: { xs: 24, sm: 28, md: 32 },
                                   '&:hover': {
-                                    backgroundColor: 'primary.main',
-                                    color: 'primary.contrastText',
+                                    background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
+                                    color: '#FFFFFF',
                                     transform: 'scale(1.05)'
                                   }
                                 }}

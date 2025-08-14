@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { Box, Typography, Container, Card, CardContent, Chip, Avatar } from '@mui/material';
 import { Work, TrendingUp, Code } from '@mui/icons-material';
-// import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../redux/hooks';
 
 const Experience = () => {
-  // const { animationsEnabled } = useAppSelector((state) => state.theme);
+  const { isDark } = useAppSelector((state) => state.theme);
 
   const experiences = [
     {
@@ -19,7 +19,7 @@ const Experience = () => {
         'Implemented CI/CD pipelines reducing deployment time by 60%'
       ],
       icon: Code,
-      color: '#3b82f6',
+      color: '#FF4D5A',
       tech: ['React', 'Node.js']
     },
     {
@@ -33,7 +33,7 @@ const Experience = () => {
         'Integrated third-party APIs and payment systems'
       ],
       icon: TrendingUp,
-      color: '#8b5cf6',
+      color: '#FFD166',
       tech: ['JavaScript', 'CSS3', 'API Integration']
     },
     {
@@ -47,7 +47,7 @@ const Experience = () => {
         'Specialized in React and modern JavaScript'
       ],
       icon: Work,
-      color: '#06b6d4',
+      color: '#FF4D5A',
       tech: ['React', 'JavaScript', 'Responsive Design']
     }
   ];
@@ -55,7 +55,14 @@ const Experience = () => {
   const { ref, isIntersecting: isInView } = useIntersectionObserver({ rootMargin: '-100px' });
 
   return (
-    <Box id="experience" sx={{ minHeight: '100vh', pt: 12, pb: 8, background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)' }}>
+    <Box id="experience" sx={{ 
+      minHeight: '100vh', 
+      pt: 12, 
+      pb: 8, 
+      background: isDark
+        ? 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)'
+        : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)'
+    }}>
       <Container maxWidth="lg">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -69,7 +76,7 @@ const Experience = () => {
             sx={{ 
               mb: 8, 
               fontWeight: 900,
-              background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+              background: 'linear-gradient(45deg, #FF4D5A, #FFD166)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
@@ -140,18 +147,15 @@ const Experience = () => {
                       flex: 1,
                       width: { xs: '100%', sm: '100%', md: 'auto' },
                       maxWidth: { xs: '100%', sm: 500, md: 600, lg: 700 },
-                      background: (theme) => theme.palette.mode === 'dark' 
-                        ? 'rgba(128, 128, 128, 0.2)' 
-                        : 'rgba(255, 255, 255, 0.9)',
+                      background: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.95)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 77, 90, 0.2)',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        boxShadow: `0 20px 40px ${exp.color}20`,
+                        background: isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 1)',
+                        boxShadow: `0 20px 40px ${exp.color}30`,
                         transform: { xs: 'translateY(-2px)', md: 'translateY(-5px)' },
-                        background: (theme) => theme.palette.mode === 'dark' 
-                          ? 'rgba(128, 128, 128, 0.3)' 
-                          : 'rgba(255, 255, 255, 0.95)'
+                        border: `1px solid ${exp.color}50`
                       }
                     }}
                   >
@@ -170,6 +174,7 @@ const Experience = () => {
                             sx={{ 
                               fontWeight: 'bold', 
                               mb: 1,
+                              color: isDark ? '#FFFFFF' : 'text.primary',
                               fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' }
                             }}
                           >
@@ -204,7 +209,7 @@ const Experience = () => {
                         variant="body1" 
                         sx={{ 
                           mb: { xs: 2, md: 3 }, 
-                          color: 'text.secondary', 
+                          color: isDark ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary', 
                           lineHeight: 1.6,
                           fontSize: { xs: '0.9rem', sm: '1rem' }
                         }}
@@ -246,8 +251,6 @@ const Experience = () => {
                           </motion.div>
                         ))}
                       </Box>
-                      
-                      {/* Achievements */}
                       <Box>
                         {exp.achievements.map((achievement, achIndex) => (
                           <motion.div
@@ -276,7 +279,7 @@ const Experience = () => {
                               <Typography 
                                 variant="body2" 
                                 sx={{ 
-                                  color: 'text.secondary',
+                                  color: isDark ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
                                   fontSize: { xs: '0.8rem', sm: '0.875rem' },
                                   lineHeight: { xs: 1.4, sm: 1.5 }
                                 }}
