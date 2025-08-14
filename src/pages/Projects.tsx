@@ -10,23 +10,27 @@ const Projects = () => {
     {
       title: 'E-Commerce Platform',
       description: 'Full-stack e-commerce solution with React, Node.js, and PostgreSQL',
-      tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      demoLink: '#',
-      githubLink: '#'
+      tech: [
+  "React 19.1.1",
+  "React DOM 19.1.1",
+  "React Router DOM 7.8.0",
+  "Framer Motion 12.23.12",
+  "Swiper 11.2.10",
+  "CSS3"
+],
+      githubLink: 'https://github.com/infantblack/Product-landin-page'
     },
     {
       title: 'Task Management App',
       description: 'Collaborative task management with real-time updates',
-      tech: ['React', 'TypeScript', 'Socket.io', 'MongoDB'],
-      demoLink: '#',
-      githubLink: '#'
+      tech: ['React','Material-UI','Emotion','MUI Icons'],
+      githubLink: 'https://github.com/infantblack/Task-Management/tree/taskmgnt'
     },
     {
       title: 'Weather Dashboard',
       description: 'Interactive weather dashboard with data visualization',
       tech: ['React', 'Chart.js', 'Weather API', 'Tailwind'],
-      demoLink: '#',
-      githubLink: '#'
+      Status: 'Working in progress ...'
     }
   ];
 
@@ -103,7 +107,7 @@ const Projects = () => {
                   </CardContent>
                   
                   <CardActions sx={{ p: 2, pt: 0 }}>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button 
                         variant="contained" 
                         startIcon={<Launch />}
@@ -112,7 +116,7 @@ const Projects = () => {
                       >
                         Demo
                       </Button>
-                    </motion.div>
+                    </motion.div> */}
                     
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button 
